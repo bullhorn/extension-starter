@@ -1,0 +1,117 @@
+name: Sample Extension
+description: Sample Extension Description
+version: 1.0
+author: Bullhorn Superstars, llc
+homepage: https://HOSTED_URL/static/sample.md
+support: https://HOSTED_URL/issues
+readme: https://HOSTED_URL/static/sample.md
+icon: https://HOSTED_URL/static/ICON.png
+license: MIT
+
+# For Client Specific Repos use corporation.id
+private: false
+
+keywords:
+  - "Extensions"
+  - "Bullhorn2017"
+  - "Sample"
+
+####################
+# Form Triggers
+####################
+
+# triggers:
+#   Candidate:
+#     - name: Crazy Validation One
+#       event: Edit
+#       url: https://HOSTED_URL/crazy-validator-one
+#     - name: Crazy Validation Two
+#       event: Add
+#       url: https://HOSTED_URL/crazy-validator-two
+
+####################
+# Cards
+####################
+
+# cards:
+#   Candidate:
+#     - name: Card 1
+#       url: https://HOSTED_URL/card1
+#       location: 1
+#     - name: Card 2
+#       url: https://HOSTED_URL/card2
+#       location: 1
+
+####################
+# Tabs
+####################
+
+# tabs:
+#   JobOrder:
+#     - name: Tab 1
+#       url: https://HOSTED_URL/tab1
+
+####################
+# Menu Actions
+####################
+
+# actions:
+#   Candidate:
+#     - name: Action1
+#       url: https://HOSTED_URL/action1
+#       location: 2
+
+####################
+# Pages
+####################
+
+# pages:
+#   - name: Page 1
+#     url: https://HOSTED_URL/page1
+#     hook: my-hook
+
+####################
+# Custom Objects
+####################
+
+# customObjects:
+#   Candidate:
+#     - name: Sample
+#       label: Sample
+#       tabName: Sample
+#       displayType: Horizontal
+#       entityList: All
+#       number: 1
+#       fields:
+#       - column: text1
+#         name: text1
+#         label: name
+#         type: Text
+#       - column: text2
+#         name: text2
+#         label: status
+#         type: Text
+#         options:
+#         - 1
+#         - 2
+#         - 3
+#       - column: date1
+#         name: date1
+#         label: DateOfEvent
+#         type: Date
+
+####################
+# Field Maps
+####################
+
+# fieldMaps:
+#   JobSubmission:
+#     - name: customText5
+#       label: My Field Map
+
+####################
+# Private Label Attributes
+####################
+
+# privateLabelAttributes:
+#   CustomWorkflowIcon: "+[MyCustomIcon|//https://HOSTED_URL/customicon]"
