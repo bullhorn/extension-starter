@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NovoElementsModule } from 'novo-elements';
 // APP
 import { AppComponent } from './app.component';
+import { AppBridgeService } from './service/app-bridge.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'sample', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
     // APP
   ],
   providers: [
+    AppBridgeService
     // Vendor Overrides
     // APP
   ],
