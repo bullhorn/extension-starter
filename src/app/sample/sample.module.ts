@@ -14,14 +14,6 @@ export const routes: Routes = [
   { path: '', component: SampleComponent, pathMatch: 'full' }
 ];
 
-const bridge = new AppBridge('SampleExtension');
-bridge.tracing = true;
-bridge.register(environment.appBridgeConfig.sample);
-
-export function setupAppBridge() {
-  return bridge;
-}
-
 @NgModule({
   imports: [
     // NG2
@@ -38,7 +30,6 @@ export function setupAppBridge() {
   ],
   providers: [
     // Vendor Overrides
-    { provide: AppBridge, useFactory: setupAppBridge }
     // APP
   ]
 })
