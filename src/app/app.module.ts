@@ -2,11 +2,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
 // Vendor
 import { NovoElementsModule } from 'novo-elements';
 // APP
 import { AppComponent } from './app.component';
 import { AppBridgeService } from './service/app-bridge.service';
+import {SettingsService} from './service/settings/settings.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'sample', pathMatch: 'full' },
@@ -23,12 +25,14 @@ const routes: Routes = [
     // NG2
     BrowserModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
     // Vendor
     NovoElementsModule,
     // APP
   ],
   providers: [
-    AppBridgeService
+    AppBridgeService,
+    SettingsService
     // Vendor Overrides
     // APP
   ],
