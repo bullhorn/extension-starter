@@ -24,7 +24,7 @@ const routes: Routes = [
   imports: [
     // NG2
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     HttpClientModule,
     // Vendor
     NovoElementsModule,
