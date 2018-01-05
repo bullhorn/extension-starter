@@ -7,6 +7,7 @@ import { NovoElementsModule } from 'novo-elements';
 // APP
 import { AppComponent } from './app.component';
 import { AppBridgeService } from './service/app-bridge.service';
+import {EntityLinkCell} from './core/table/entity-link-cell.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'sample', pathMatch: 'full' },
@@ -16,7 +17,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     // Main Entry Component
-    AppComponent
+    AppComponent,
+    EntityLinkCell
     // Modals/Popovers
   ],
   imports: [
@@ -24,8 +26,11 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     // Vendor
-    NovoElementsModule,
+    NovoElementsModule
     // APP
+  ],
+  entryComponents: [
+    EntityLinkCell
   ],
   providers: [
     AppBridgeService
