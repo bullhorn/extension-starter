@@ -9,15 +9,9 @@
     "build:staging": "ng build --aot --env=staging",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "precommit": "lint-staged"
+    "e2e": "ng e2e"
   },
   "private": true,
-  "lint-staged": {
-    "*.ts": [
-      "tslint"
-    ]
-  },
   "dependencies": {
     "@angular/animations": "5.2.0",
     "@angular/common": "5.2.0",
