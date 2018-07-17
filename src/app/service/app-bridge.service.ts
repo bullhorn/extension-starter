@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {AppBridge} from 'novo-elements';
+import { AppBridge } from 'novo-elements';
 
 import { environment } from '../../environments/environment';
 
@@ -9,7 +9,7 @@ export class AppBridgeService {
 
   private bridge: AppBridge;
 
-  private registered: boolean = false;
+  private registered = false;
 
   constructor() {
     this.bridge = new AppBridge(environment.appBridgeConfig.title);
@@ -32,7 +32,7 @@ export class AppBridgeService {
   }
 
   private register() {
-    this.bridge.register(environment.appBridgeConfig).then( () => {
+    this.bridge.register(environment.appBridgeConfig).then(() => {
       this.registered = true;
     }, () => {
       setTimeout(() => {
