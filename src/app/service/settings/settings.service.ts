@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Location} from '@angular/common';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
-import createHash from 'sha.js';
+import * as shajs from 'sha.js';
 
 import { environment } from '../../../environments/environment';
 import {Configuration} from './settings.types';
@@ -11,7 +11,7 @@ import {Configuration} from './settings.types';
 export class SettingsService {
 
   private static CORPORATION_ID: RegExp = /CorporationID=(.*?)(&|$)/;
-  private static SHA_256 = createHash('sha256');
+  private static SHA_256 = shajs('sha256');
 
   private corporationId: number;
 
