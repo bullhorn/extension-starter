@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NovoModalRef} from 'novo-elements';
+import {NovoModalParams, NovoModalRef} from 'novo-elements';
 import {CustomModalParams, StandardModalParams} from '../modal.types';
 
 @Component({
@@ -11,8 +11,8 @@ export class StandardModalComponent {
 
   public modalParams: StandardModalParams;
 
-  constructor(private modalRef: NovoModalRef, modalParams: StandardModalParams) {
-    this.modalParams = modalParams;
+  constructor(private modalRef: NovoModalRef, modalParams: NovoModalParams) {
+    this.modalParams = StandardModalParams.fromNovo(modalParams);
   }
 
   close() {

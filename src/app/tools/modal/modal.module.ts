@@ -14,6 +14,9 @@ import {StandardModalComponent} from './standard/standard-modal.component';
   declarations: [
     StandardModalComponent
   ],
+  entryComponents: [
+    StandardModalComponent
+  ],
   exports: [
     StandardModalComponent
   ]

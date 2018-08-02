@@ -14,6 +14,9 @@ import {PreviewCell} from './cells/preview-cell.component';
   declarations: [
     PreviewCell
   ],
+  entryComponents: [
+    PreviewCell
+  ],
   exports: [
     PreviewCell
   ]
