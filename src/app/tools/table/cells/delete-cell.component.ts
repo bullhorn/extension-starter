@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {BaseRenderer} from 'novo-elements';
 
+import {BaseRenderer} from 'novo-elements';
 
 @Component({
   selector: 'delete-cell',

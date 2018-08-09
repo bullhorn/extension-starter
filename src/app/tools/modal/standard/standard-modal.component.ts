@@ -1,6 +1,8 @@
 import {Component} from '@angular/core';
+
 import {NovoModalParams, NovoModalRef} from 'novo-elements';
-import {CustomModalParams, StandardModalParams} from '../modal.types';
+
+import {StandardModalParams} from '../modal.types';
 
 @Component({
   selector: 'standard-modal',
