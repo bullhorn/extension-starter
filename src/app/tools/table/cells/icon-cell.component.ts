@@ -3,12 +3,12 @@ import {Component} from '@angular/core';
 import {BaseRenderer} from 'novo-elements';
 
 @Component({
-  selector: 'preview-cell',
+  selector: 'icon-cell',
   template: `
-    <button icon="preview" theme="icon" side="right" (click)="onClick()"></button>
+    <button [icon]="meta.icon" theme="icon" side="right" (click)="onClick()"></button>
   `
 })
-export class PreviewCellComponent extends BaseRenderer {
+export class IconCellComponent extends BaseRenderer {
 
   onClick(): void {
     if(this.meta.onClick) {

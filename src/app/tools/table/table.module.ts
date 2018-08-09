@@ -3,7 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import {NovoElementProviders, NovoElementsModule} from 'novo-elements';
 
-import {PreviewCell} from './cells/preview-cell.component';
+import {PreviewCellComponent} from './cells/preview-cell.component';
+import {DeleteCellComponent} from './cells/delete-cell.component';
+import {EditCellComponent} from './cells/edit-cell.component';
+import {IconCellComponent} from './cells/icon-cell.component';
+import {TableDataProvider} from './service/table-data-provider.service';
 
 @NgModule({
   imports: [
@@ -12,13 +16,22 @@ import {PreviewCell} from './cells/preview-cell.component';
     NovoElementProviders.forChild()
   ],
   declarations: [
-    PreviewCell
+    PreviewCellComponent,
+    DeleteCellComponent,
+    EditCellComponent,
+    IconCellComponent
   ],
   entryComponents: [
-    PreviewCell
+    PreviewCellComponent,
+    DeleteCellComponent,
+    EditCellComponent,
+    IconCellComponent
   ],
   exports: [
-    PreviewCell
+    PreviewCellComponent,
+    DeleteCellComponent,
+    EditCellComponent,
+    IconCellComponent
   ]
 })
 export class TableModule { }
