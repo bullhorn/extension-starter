@@ -1,5 +1,6 @@
 // NG2
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 // Vendor
 // APP
 
@@ -8,5 +9,10 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+title='app'
+  constructor() { }
+
+  ngOnInit() {
+  }
 }
