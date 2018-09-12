@@ -86,6 +86,7 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
       this.pagesLoaded++;
 
       let count: number = this.pageSize;
+      let start: number = (this.pagesLoaded - 1) * this.pageSize;
 
       return new Promise<QueryResult<T>>(resolve => {
         let request: QueryRequest = this.getRequest(start, count);
@@ -142,7 +143,10 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
   }
 
   needMore(): boolean {
-    if (this.pagesLoaded === 0 || this.sortChanged() || this.filterChanged()) {
+    const sortChanged = this.sortChanged();
+    const filterChanged = this.filterChanged();
+
+    if (this.pagesLoaded === 0 || sortChanged || filterChanged) {
       this.removeAll();
       return true;
     }
@@ -153,8 +157,10 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
   }
 
   filterChanged(): boolean {
-    if(!this.lastFilter || this.lastFilter != this.filter) {
+    if(this.lastFilter != this.filter) {
       this.lastFilter = this.filter;
+      this.page = 1;
+      this.pagesLoaded = 0;
       return true;
     }
 
@@ -162,8 +168,10 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
   }
 
   sortChanged() {
-    if(!this.lastSort || this.lastSort != this.sort) {
+    if(this.lastSort != this.sort) {
       this.lastSort = this.sort;
+      this.page = 1;
+      this.pagesLoaded = 0;
       return true;
     }
 
