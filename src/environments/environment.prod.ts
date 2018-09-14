@@ -3,6 +3,6 @@ export const environment = {
   appBridgeConfig: {
     title: 'CustomApp',
     url: 'https://HOSTED_URL/sample',
-    color: 'blue'
-  }
+    color: 'blue',
+  },
 };

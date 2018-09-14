@@ -1,4 +1,4 @@
-// NG2
+// NG
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -10,17 +10,17 @@ import { AppBridgeService } from './service/app-bridge.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'sample', pathMatch: 'full' },
-  { path: 'sample', loadChildren: './sample/sample.module#SampleModule' }
+  { path: 'sample', loadChildren: './sample/sample.module#SampleModule' },
 ];
 
 @NgModule({
   declarations: [
     // Main Entry Component
-    AppComponent
+    AppComponent,
     // Modals/Popovers
   ],
   imports: [
-    // NG2
+    // NG
     BrowserModule,
     RouterModule.forRoot(routes),
     // Vendor
@@ -28,14 +28,14 @@ const routes: Routes = [
     // APP
   ],
   providers: [
-    AppBridgeService
+    AppBridgeService,
     // Vendor Overrides
     // APP
   ],
   bootstrap: [
     // Main Entry Component
-    AppComponent
+    AppComponent,
     // Modals/Popovers
-  ]
+  ],
 })
-export class AppModule { }
+export class AppModule {}

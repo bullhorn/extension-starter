@@ -1,4 +1,4 @@
-// NG2
+// NG
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 // Vendor
 // APP
@@ -10,9 +10,8 @@ describe('SampleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SampleComponent]
-    })
-      .compileComponents();
+      declarations: [SampleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

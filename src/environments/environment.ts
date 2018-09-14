@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   appBridgeConfig: {
     title: 'CustomApp',
-    url: 'http://localhost:4200/sample',
-    color: 'blue'
-  }
+    url: 'http://localhost:4200/',
+    color: 'blue',
+  },
 };
