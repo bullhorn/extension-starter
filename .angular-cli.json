@@ -3,38 +3,47 @@
   "project": {
     "name": "platform-extension-starter"
   },
-  "apps": [
-    {
-      "root": "src",
-      "outDir": "dist",
-      "assets": ["assets", "favicon.ico", "static"],
-      "index": "index.html",
-      "main": "main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
-      "prefix": "platform",
-      "styles": ["styles.scss"],
-      "stylePreprocessorOptions": {
-        "includePaths": ["../node_modules/hint.css/src", "../node_modules/novo-elements"]
-      },
-      "scripts": ["../node_modules/post-robot/dist/post-robot.min.js"],
-      "environmentSource": "environments/environment.ts",
-      "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts",
-        "staging": "environments/environment.staging.ts"
-      }
+  "apps": [{
+    "root": "src",
+    "outDir": "dist",
+    "assets": [
+      "assets",
+      "favicon.ico",
+      "static"
+    ],
+    "index": "index.html",
+    "main": "main.ts",
+    "polyfills": "polyfills.ts",
+    "test": "test.ts",
+    "tsconfig": "tsconfig.app.json",
+    "testTsconfig": "tsconfig.spec.json",
+    "prefix": "platform",
+    "styles": [
+      "styles.scss"
+    ],
+    "stylePreprocessorOptions": {
+      "includePaths": [
+        "../node_modules/hint.css/src",
+        "../node_modules/novo-elements"
+      ]
+    },
+    "scripts": [
+      "../node_modules/post-robot/dist/post-robot.min.js"
+    ],
+    "environmentSource": "environments/environment.ts",
+    "environments": {
+      "dev": "environments/environment.ts",
+      "prod": "environments/environment.prod.ts",
+      "staging": "environments/environment.staging.ts",
+      "local": "environments/environment.local.ts"
     }
-  ],
+  }],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
     }
   },
-  "lint": [
-    {
+  "lint": [{
       "project": "src/tsconfig.app.json"
     },
     {

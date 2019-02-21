@@ -1,0 +1,6 @@
+<novo-notification type="warning">
+  <h1>{{ modalParams.message }}</h1>
+  <button *ngIf="modalParams.isConfirm" theme="standard" (click)="close()">Cancel</button>
+  <button *ngIf="modalParams.isConfirm" theme="primary" icon="check" (click)="yes()">Yes</button>
+  <button *ngIf="!modalParams.isConfirm" theme="primary" icon="check" (click)="yes()">OK</button>
+</novo-notification>
