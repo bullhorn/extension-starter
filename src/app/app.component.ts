@@ -1,11 +1,13 @@
-// NG
+// NG2
 import { Component } from '@angular/core';
 // Vendor
 // APP
 
 @Component({
   selector: 'platform-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  template: `
+    <router-outlet></router-outlet>
+  `
 })
-export class AppComponent {}
+export class AppComponent {
+}

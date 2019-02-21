@@ -1,9 +1,9 @@
 export const environment = {
-  local: false,
-  production: true,
+  local: true,
+  production: false,
   appBridgeConfig: {
-    title: 'CustomApp',
+    title: 'CustomAppInStaging',
     url: 'https://HOSTED_URL/sample',
-    color: 'blue',
-  },
+    color: 'blue'
+  }
 };

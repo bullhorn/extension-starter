@@ -6,36 +6,28 @@ import { Routes, RouterModule } from '@angular/router';
 import { NovoElementsModule } from 'novo-elements';
 // APP
 import { AppComponent } from './app.component';
-import { AppBridgeService } from './service/app-bridge.service';
+import {HttpClientModule} from '@angular/common/http';
+import {AppBridgeService} from './tools/service/app-bridge.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'sample', pathMatch: 'full' },
-  { path: 'sample', loadChildren: './sample/sample.module#SampleModule' },
+  { path: '', redirectTo: 'sample', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
-    // Main Entry Component
-    AppComponent,
-    // Modals/Popovers
+    AppComponent
   ],
   imports: [
-    // NG
     BrowserModule,
     RouterModule.forRoot(routes),
-    // Vendor
-    NovoElementsModule,
-    // APP
+    HttpClientModule,
+    NovoElementsModule
   ],
   providers: [
-    AppBridgeService,
-    // Vendor Overrides
-    // APP
+    AppBridgeService
   ],
   bootstrap: [
-    // Main Entry Component
-    AppComponent,
-    // Modals/Popovers
+    AppComponent
   ],
 })
 export class AppModule {}
