@@ -1,45 +1,35 @@
-// NG2
+// NG
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {HttpClientModule} from '@angular/common/http';
 // Vendor
 import { NovoElementsModule } from 'novo-elements';
 // APP
 import { AppComponent } from './app.component';
-import { AppBridgeService } from './service/app-bridge.service';
-import {SettingsService} from './service/settings/settings.service';
+import {HttpClientModule} from '@angular/common/http';
+import {AppBridgeService} from './tools/service/app-bridge.service';
+import {SettingsService} from './tools/service/settings/settings.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'sample', pathMatch: 'full' },
-  { path: 'sample', loadChildren: './sample/sample.module#SampleModule' }
+  { path: '', redirectTo: 'sample', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
-    // Main Entry Component
     AppComponent
-    // Modals/Popovers
   ],
   imports: [
-    // NG2
     BrowserModule,
-    RouterModule.forRoot(routes, { useHash: true }),
+    RouterModule.forRoot(routes),
     HttpClientModule,
-    // Vendor
-    NovoElementsModule,
-    // APP
+    NovoElementsModule
   ],
   providers: [
     AppBridgeService,
     SettingsService
-    // Vendor Overrides
-    // APP
   ],
   bootstrap: [
-    // Main Entry Component
     AppComponent
-    // Modals/Popovers
-  ]
+  ],
 })
-export class AppModule { }
+export class AppModule {}

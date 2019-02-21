@@ -1,4 +1,5 @@
 export const environment = {
+  local: false,
   production: true,
   appBridgeConfig: {
     title: 'CustomApp',

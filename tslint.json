@@ -60,7 +60,10 @@
     "no-empty": false,
     "no-empty-interface": true,
     "no-eval": true,
-    "no-inferrable-types": false,
+    "no-inferrable-types": [
+      true,
+      "ignore-params"
+    ],
     "no-misused-new": true,
     "no-non-null-assertion": true,
     "no-shadowed-variable": true,
@@ -114,8 +117,18 @@
       "check-separator",
       "check-type"
     ],
-    "directive-selector": false,
-    "component-selector": false,
+    "directive-selector": [
+      true,
+      "attribute",
+      "platform",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "platform",
+      "kebab-case"
+    ],
     "no-output-on-prefix": true,
     "use-input-property-decorator": true,
     "use-output-property-decorator": true,
@@ -124,7 +137,10 @@
     "no-output-rename": true,
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
-    "component-class-suffix": false,
-    "directive-class-suffix": false
+    "component-class-suffix": true,
+    "directive-class-suffix": true,
+    "no-access-missing-member": true,
+    "templates-use-public": true,
+    "invoke-injectable": true
   }
 }

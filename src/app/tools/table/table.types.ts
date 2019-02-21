@@ -15,7 +15,7 @@ export interface QueryRequest {
   start: number;
   count: number;
   sort: string;
-  sortDirection: 'DESC' | 'ASC' | '';
+  sortDirection: 'DESC' | 'ASC';
   filters: { [key: string]:  any};
 
 }

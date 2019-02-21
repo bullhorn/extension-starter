@@ -34,7 +34,8 @@
     "environments": {
       "dev": "environments/environment.ts",
       "prod": "environments/environment.prod.ts",
-      "staging": "environments/environment.staging.ts"
+      "staging": "environments/environment.staging.ts",
+      "local": "environments/environment.local.ts"
     }
   }],
   "e2e": {

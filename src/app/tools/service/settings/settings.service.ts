@@ -4,7 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import * as shajs from 'sha.js';
 
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 import {Configuration} from './settings.types';
 
 @Injectable()

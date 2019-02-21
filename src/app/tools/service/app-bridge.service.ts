@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { AppBridge } from 'novo-elements';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AppBridgeService {

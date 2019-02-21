@@ -121,7 +121,7 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
 
   getRequest(start: number, count: number): QueryRequest {
     let sort: string = '';
-    let sortDirection: 'DESC' | 'ASC' | '' = '';
+    let sortDirection: 'DESC' | 'ASC' = 'ASC';
 
     if(this.sort && this.sort.length > 0 && this.sort[0].field) {
       sort = this.sort[0].field;
