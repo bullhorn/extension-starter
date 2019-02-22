@@ -10,7 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppBridgeService} from './tools/service/app-bridge.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'sample', pathMatch: 'full' }
+  { path: '', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -19,7 +19,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { useHash: true }),
     HttpClientModule,
     NovoElementsModule
   ],

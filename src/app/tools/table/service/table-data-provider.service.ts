@@ -3,6 +3,7 @@ import {EventEmitter} from '@angular/core';
 import {CollectionEvent, PagedArrayCollection} from 'novo-elements';
 
 import {DataService, QueryRequest, QueryResult} from '../table.types';
+import {debounceTime} from 'rxjs/operators';
 
 const HALF_SECOND = 500;
 
@@ -27,7 +28,7 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
   constructor(dataProvider: DataService<T>) {
     super([]);
     this.dataProvider = dataProvider;
-    this.refreshing.debounceTime(HALF_SECOND).subscribe((event) => {
+    this.refreshing.pipe(debounceTime(HALF_SECOND)).subscribe((event) => {
       this._errored = false;
       this.loading = true;
       this.gettingMore.emit(true);
