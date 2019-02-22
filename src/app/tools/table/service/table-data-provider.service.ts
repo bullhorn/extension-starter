@@ -3,6 +3,7 @@ import {EventEmitter} from '@angular/core';
 import {CollectionEvent, PagedArrayCollection} from 'novo-elements';
 
 import {DataService, QueryRequest, QueryResult} from '../table.types';
+import {debounceTime} from 'rxjs/operators';
 
 const HALF_SECOND = 500;
 
@@ -27,7 +28,7 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
   constructor(dataProvider: DataService<T>) {
     super([]);
     this.dataProvider = dataProvider;
-    this.refreshing.debounceTime(HALF_SECOND).subscribe((event) => {
+    this.refreshing.pipe(debounceTime(HALF_SECOND)).subscribe((event) => {
       this._errored = false;
       this.loading = true;
       this.gettingMore.emit(true);
@@ -78,18 +79,17 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
   }
 
   loadMore(): any {
-    const start: number = (this.page - 1) * this.pageSize;
+    const start: number = (this.pagesLoaded - 1) * this.pageSize;
 
     if (this.needMore()) {
       this.loading = true;
       this.gettingMore.emit(true);
       this.pagesLoaded++;
 
-      let count: number = this.pageSize;
-      let start: number = (this.pagesLoaded - 1) * this.pageSize;
+      const count: number = this.pageSize;
 
       return new Promise<QueryResult<T>>(resolve => {
-        let request: QueryRequest = this.getRequest(start, count);
+        const request: QueryRequest = this.getRequest(start, count);
 
         this.dataProvider.getData(request).then( response => {
           this.loading = false;
@@ -113,17 +113,17 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
       });
     }
 
-    let end: number = start + this.pageSize;
-    let result: any = this.source.slice(start, end);
+    const end: number = start + this.pageSize;
+    const result: any = this.source.slice(start, end);
 
     return Promise.resolve(result);
   }
 
   getRequest(start: number, count: number): QueryRequest {
-    let sort: string = '';
+    let sort = '';
     let sortDirection: 'DESC' | 'ASC' = 'ASC';
 
-    if(this.sort && this.sort.length > 0 && this.sort[0].field) {
+    if (this.sort && this.sort.length > 0 && this.sort[0].field) {
       sort = this.sort[0].field;
       sortDirection = this.sort[0].reverse ? 'DESC' : 'ASC';
     }
@@ -134,7 +134,7 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
       sort: sort,
       sortDirection: sortDirection,
       filters: this.filter
-    }
+    };
   }
 
   removeAll(): void {
@@ -151,13 +151,13 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
       return true;
     }
 
-    let recordsNeeded: number = this.page * this.pageSize;
+    const recordsNeeded: number = this.page * this.pageSize;
 
     return !(this.source.length >= Math.min(this.totalResults, recordsNeeded));
   }
 
   filterChanged(): boolean {
-    if(this.lastFilter != this.filter) {
+    if (this.lastFilter !== this.filter) {
       this.lastFilter = this.filter;
       this.page = 1;
       this.pagesLoaded = 0;
@@ -168,7 +168,7 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
   }
 
   sortChanged() {
-    if(this.lastSort != this.sort) {
+    if (this.lastSort !== this.sort) {
       this.lastSort = this.sort;
       this.page = 1;
       this.pagesLoaded = 0;
@@ -181,7 +181,7 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
   refresh(): void {
     this.filterData = this.source.slice();
 
-    let event: any = JSON.stringify({
+    const event: any = JSON.stringify({
       page: this.page,
       pageSize: this.pageSize,
       forced: this.forced,
