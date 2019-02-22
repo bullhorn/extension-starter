@@ -11,7 +11,7 @@ import {AppBridgeService} from './tools/service/app-bridge.service';
 import {SettingsService} from './tools/service/settings/settings.service';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'sample', pathMatch: 'full' }
+  { path: '', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
