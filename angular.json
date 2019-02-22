@@ -35,7 +35,7 @@
             ]
           },
           "configurations": {
-            "production": {
+            "prod": {
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -76,7 +76,7 @@
             "browserTarget": "platform-extension-starter:build"
           },
           "configurations": {
-            "production": {
+            "prod": {
               "browserTarget": "platform-extension-starter:build:production"
             },
             "staging": {
