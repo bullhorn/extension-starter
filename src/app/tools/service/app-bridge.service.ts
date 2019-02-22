@@ -17,7 +17,7 @@ export class AppBridgeService {
     this.register();
   }
 
-  execute(execute: (bridge: AppBridge) => void) {
+  public execute(execute: (bridge: AppBridge) => void) {
     if (this.registered) {
       execute(this.bridge);
     } else {
@@ -28,6 +28,22 @@ export class AppBridgeService {
           execute(this.bridge);
         }
       }, 500);
+    }
+  }
+
+  public promise(): Promise<AppBridge> {
+    if (this.registered) {
+      return Promise.resolve(this.bridge);
+    } else {
+      return new Promise((resolve, reject) => {
+        const interval = setInterval(() => {
+          if (this.registered) {
+            clearInterval(interval);
+
+            resolve(this.bridge);
+          }
+        }, 500);
+      });
     }
   }
 
