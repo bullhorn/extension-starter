@@ -16,7 +16,7 @@
               "@bullhorn/dragula",
               "angular2-text-mask",
               "date-fns",
-              "angular2-text-mask"
+              "sha.js"
             ],
             "outputPath": "dist",
             "index": "src/index.html",
