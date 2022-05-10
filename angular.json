@@ -12,11 +12,12 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "brace/mode/javascript",
+              "@bullhorn/taurus",
               "@bullhorn/dragula",
+              "brace/mode/javascript",
               "angular2-text-mask",
-              "date-fns",
-              "sha.js"
+              "sha.js",
+              "date-fns"
             ],
             "outputPath": "dist",
             "index": "src/index.html",
