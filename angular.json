@@ -11,6 +11,14 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "@bullhorn/taurus",
+              "@bullhorn/dragula",
+              "brace/mode/javascript",
+              "angular2-text-mask",
+              "sha.js",
+              "date-fns"
+            ],
             "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
