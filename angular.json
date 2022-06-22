@@ -149,7 +149,7 @@
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "platform",
-      "styleext": "scss"
+      "style": "scss"
     },
     "@schematics/angular:directive": {
       "prefix": "platform"
