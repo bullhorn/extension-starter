@@ -30,6 +30,7 @@
     "@angular/platform-browser-dynamic": "~13.3.1",
     "@angular/platform-server": "~13.3.1",
     "@angular/router": "~13.3.1",
+    "@bullhorn/bullhorn-types": "^1.89.0",
     "@bullhorn/dragula": "1.0.1",
     "@types/estree": "^0.0.51",
     "@types/node": "^17.0.44",
