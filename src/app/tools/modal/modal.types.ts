@@ -9,15 +9,16 @@ export interface CustomModalParams extends ModalParams {
 export class StandardModalParams implements CustomModalParams {
   public message: string;
   public isConfirm = false;
-
-  static fromNovo(params: NovoModalParams): StandardModalParams {
-    return new StandardModalParams(params['message'], params['isConfirm'], params['onClose']);
-  }
-
-  public onClose: (result: boolean) => void = () => { };
+  
   constructor(message: string, isConfirm: boolean = false, onClose: (result: boolean) => void = () => { }) {
     this.message = message;
     this.isConfirm = isConfirm;
     this.onClose = onClose;
   }
+  
+  static fromNovo(params: NovoModalParams): StandardModalParams {
+    return new StandardModalParams(params['message'], params['isConfirm'], params['onClose']);
+  }
+  
+  public onClose: (result: boolean) => void = () => { };
 }

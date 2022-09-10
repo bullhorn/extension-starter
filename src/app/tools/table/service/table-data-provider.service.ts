@@ -48,14 +48,6 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
     return this.totalResults;
   }
 
-  isLoading(): boolean {
-    return this.loading;
-  }
-
-  hasErrors(): boolean {
-    return this._errored;
-  }
-
   get pageSize(): number {
     return this._pageSize;
   }
@@ -67,6 +59,14 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
       this.pagesLoaded = 0;
       this.refresh();
     }
+  }
+
+  isLoading(): boolean {
+    return this.loading;
+  }
+
+  hasErrors(): boolean {
+    return this._errored;
   }
 
   reset(): void {
@@ -129,10 +129,10 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
     }
 
     return {
-      count: count,
-      start: start,
-      sort: sort,
-      sortDirection: sortDirection,
+      count,
+      start,
+      sort,
+      sortDirection,
       filters: this.filter
     };
   }
@@ -189,7 +189,5 @@ export class TableDataProvider<T> extends PagedArrayCollection<T> {
 
     this.refreshing.emit(event);
   }
-
-
 
 }

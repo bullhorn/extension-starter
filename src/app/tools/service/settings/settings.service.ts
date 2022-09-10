@@ -10,7 +10,7 @@ import {Configuration} from './settings.types';
 @Injectable()
 export class SettingsService {
 
-  private static CORPORATION_ID: RegExp = /CorporationID=(.*?)(&|$)/;
+  private static CORPORATION_ID = /CorporationID=(.*?)(&|$)/;
   private static SHA_256 = shajs('sha256');
 
   private corporationId: number;
@@ -43,7 +43,7 @@ export class SettingsService {
   }
 
   private getAuthorization(): string {
-    const key: string = `${environment.settingsConfig.authKey}${this.corporationId}${environment.settingsConfig.title}`;
+    const key = `${environment.settingsConfig.authKey}${this.corporationId}${environment.settingsConfig.title}`;
 
     return SettingsService.SHA_256.update(key).digest('hex');
   }
