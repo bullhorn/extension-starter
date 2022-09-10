@@ -1,5 +1,5 @@
 import {Injectable, ViewContainerRef} from '@angular/core';
-import {NovoToastService} from "novo-elements";
+import {NovoToastService} from 'novo-elements';
 
 
 export class ToastService {
@@ -13,9 +13,9 @@ export class ToastService {
 
   public success(message: string, title: string = 'Success', icon: string = 'check'): void {
     this.toastService.alert({
-      title: title,
-      message: message,
-      icon: icon,
+      title,
+      message,
+      icon,
       theme: 'success',
       position: 'growlTopRight'
     });
@@ -23,9 +23,9 @@ export class ToastService {
 
   public danger(message: string, title: string = 'Error', icon: string = 'caution'): void {
     this.toastService.alert({
-      title: title,
-      message: message,
-      icon: icon,
+      title,
+      message,
+      icon,
       theme: 'danger',
       position: 'growlTopRight'
     });
