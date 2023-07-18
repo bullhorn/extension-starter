@@ -8,7 +8,12 @@ export const environment = {
   production: false,
   appBridgeConfig: {
     title: 'CustomApp',
-    url: 'http://localhost:4200/',
-    color: 'blue',
+    url: 'http://localhost:4200/sample',
+    color: 'blue'
   },
+  settingsConfig: {
+    title: 'CustomApp',
+    authKey: 'UcTw_E_D#Wg]>kVUnK|*~U,Gmhe*{X',
+    url: 'https://aquarium-staging.bullhorncloud.com/data'
+  }
 };
