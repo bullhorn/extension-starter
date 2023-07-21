@@ -8,7 +8,6 @@ import { NovoElementsModule } from 'novo-elements';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AppBridgeService} from './tools/service/app-bridge.service';
-import {SettingsService} from './tools/service/settings/settings.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
@@ -28,7 +27,6 @@ const routes: Routes = [
   ],
   providers: [
     AppBridgeService,
-    SettingsService
   ],
   bootstrap: [
     AppComponent
