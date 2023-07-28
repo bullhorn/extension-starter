@@ -67,6 +67,8 @@
               ]
             },
             "staging": {
+              "optimization": false,
+              "sourceMap": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -75,6 +77,8 @@
               ]
             },
             "local": {
+              "optimization": false,
+              "sourceMap": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
