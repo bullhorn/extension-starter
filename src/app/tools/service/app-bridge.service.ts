@@ -48,6 +48,7 @@ export class AppBridgeService {
   }
 
   private register() {
+    // @ts-ignore
     this.bridge.register(environment.appBridgeConfig).then(() => {
       this.registered = true;
     }, () => {
