@@ -92,24 +92,24 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "platform-extension-starter:build"
+            "buildTarget": "platform-extension-starter:build"
           },
           "configurations": {
             "prod": {
-              "browserTarget": "platform-extension-starter:build:production"
+              "buildTarget": "platform-extension-starter:build:production"
             },
             "staging": {
-              "browserTarget": "platform-extension-starter:build:staging"
+              "buildTarget": "platform-extension-starter:build:staging"
             },
             "local": {
-              "browserTarget": "platform-extension-starter:build:local"
+              "buildTarget": "platform-extension-starter:build:local"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "platform-extension-starter:build"
+            "buildTarget": "platform-extension-starter:build"
           }
         },
         "test": {
@@ -158,7 +158,6 @@
       }
     }
   },
-  "defaultProject": "platform-extension-starter",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "platform",
@@ -169,6 +168,9 @@
     }
   },
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ],
+    "analytics": "cb57de0c-7534-4202-86fe-0ac963940751"
   }
 }
