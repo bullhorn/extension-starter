@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'platform-root',
   template: `
+    <p>Hello World</p>
     <router-outlet></router-outlet>
   `
 })
