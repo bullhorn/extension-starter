@@ -6,7 +6,8 @@ import {BaseRenderer} from 'novo-elements';
   selector: 'delete-cell',
   template: `
     <button icon="delete" theme="icon" side="right" (click)="onClick()"></button>
-  `
+  `,
+  standalone: false
 })
 export class DeleteCellComponent extends BaseRenderer {
 

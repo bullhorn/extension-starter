@@ -2,7 +2,7 @@ import { SafePipe } from './safe.pipe';
 
 describe('SafePipe', () => {
   it('create an instance', () => {
-    const pipe = new SafePipe();
+    const pipe = new SafePipe(jasmine.createSpyObj('DomSanitizer', ['bypassSecurityTrustHtml']));
     expect(pipe).toBeTruthy();
   });
 });

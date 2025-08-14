@@ -7,7 +7,8 @@ import {StandardModalParams} from '../modal.types';
 @Component({
   selector: 'standard-modal',
   templateUrl: './standard-modal.component.html',
-  styleUrls: ['./standard-modal.component.scss']
+  styleUrls: ['./standard-modal.component.scss'],
+  standalone: false,
 })
 export class StandardModalComponent {
 

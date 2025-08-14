@@ -1,14 +1,11 @@
 // NG2
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NovoElementsModule } from 'novo-elements';
 // Vendor
 // APP
 
 @Component({
   selector: 'platform-root',
-  standalone: true,
-  imports: [RouterOutlet, NovoElementsModule],
+  standalone: false,
   template: `
     <novo-title>
       Hello World!
@@ -16,5 +13,4 @@ import { NovoElementsModule } from 'novo-elements';
     <router-outlet></router-outlet>
   `
 })
-export class AppComponent {
-}
+export class AppComponent {}
