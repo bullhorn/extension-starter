@@ -1,19 +1,19 @@
 import { DomSanitizer } from '@angular/platform-browser';
+import { Mocked } from 'vitest';
 import { SafePipe } from './safe.pipe';
 
 describe('SafePipe', () => {
   let pipe: SafePipe;
-  let mockDomSanitizer: jest.Mocked<DomSanitizer>;
+  let mockDomSanitizer: Mocked<DomSanitizer>;
 
   beforeEach(() => {
-    // Create a Jest mock for DomSanitizer with all methods used by SafePipe
     mockDomSanitizer = {
-      bypassSecurityTrustHtml: jest.fn(),
-      bypassSecurityTrustStyle: jest.fn(),
-      bypassSecurityTrustScript: jest.fn(),
-      bypassSecurityTrustUrl: jest.fn(),
-      bypassSecurityTrustResourceUrl: jest.fn(),
-      sanitize: jest.fn()
+      bypassSecurityTrustHtml: vi.fn(),
+      bypassSecurityTrustStyle: vi.fn(),
+      bypassSecurityTrustScript: vi.fn(),
+      bypassSecurityTrustUrl: vi.fn(),
+      bypassSecurityTrustResourceUrl: vi.fn(),
+      sanitize: vi.fn()
     } as any;
 
     pipe = new SafePipe(mockDomSanitizer);
