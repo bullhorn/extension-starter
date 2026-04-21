@@ -39,7 +39,10 @@
             "allowedCommonJsDependencies": [
               "@bullhorn/taurus",
               "@bullhorn/dragula",
+              "brace",
               "brace/mode/javascript",
+              "brace/ext/language_tools.js",
+              "brace/theme/chrome",
               "angular2-text-mask",
               "sha.js",
               "date-fns",
