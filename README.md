@@ -21,7 +21,7 @@
 | `npm run start:local`    | Dev server using `environment.local.ts`               |
 | `npm run build`          | Production build (`--configuration=prod`)             |
 | `npm run build:staging`  | Staging build                                         |
-| `npm test`               | Jest (runs via `@angular-builders/jest`)              |
+| `npm test`               | Vitest (runs via `@analogjs/vitest-angular:test`)     |
 | `npm run lint`           | ESLint over `src/**/*.{ts,html}`                      |
 
 ## Stack
@@ -29,7 +29,7 @@
 * **Angular 20** + Angular CDK 20
 * **TypeScript 5.8**
 * **novo-elements 12.1.0** (UI), novo-design-tokens, hint.css
-* **Jest 30** + jest-preset-angular 15
+* **Vitest 3** + `@analogjs/vitest-angular` 2 (Angular plugin + `ng test` builder), jsdom 29
 * ESLint 8.57 + `@angular-eslint` 20, `@typescript-eslint` 8
 * `post-robot` 8 (parent-window messaging, wrapped by novo-elements' `AppBridge`)
 * `@bullhorn/bullhorn-types` for Bullhorn API typings
@@ -60,3 +60,15 @@ Every upgrade is slightly different. [update.angular.io](https://update.angular.
 6. `npm test` and `npm run build` to verify.
 
 Expect the production bundle to grow substantially — novo-elements 12 ships brace and codemirror as peer deps rather than optional installs, so they're always bundled.
+
+### Example: Jest → Vitest
+
+1. Uninstall Jest packages: `jest`, `jest-environment-jsdom`, `jest-preset-angular`, `@angular-builders/jest`, `@types/jest`, `@briebug/jest-schematic`.
+2. Install Vitest packages: `vitest@^3.1.1`, `@analogjs/vitest-angular@^2.4.10`, `@analogjs/vite-plugin-angular@^2.4.10`, `jsdom@^29.0.0`. Note: `@angular/build` pins `vitest` peer to `^3.1.1`, so don't jump to Vitest 4 until Angular's `@angular/build` range allows it.
+3. Create `vitest.config.mts` at the repo root with the Analog plugin, `environment: 'jsdom'`, `globals: true`, and `setupFiles: ['src/test-setup.ts']`. (Use `.mts` rather than `.ts` to avoid a Node ESM-via-require warning.)
+4. Create `src/test-setup.ts` that imports `@angular/compiler`, `@analogjs/vitest-angular/setup-zone`, and calls `setupTestBed({ zoneless: false })` — this project still runs on Zone.js.
+5. In `angular.json`, replace the `test` target's builder with `@analogjs/vitest-angular:test` and drop the Jest-specific options block; Vitest reads config from `vitest.config.mts`.
+6. In `tsconfig.spec.json`, set `types` to `["vitest/globals", "node"]`, `files` to `["src/test-setup.ts"]`, and `target` to `es2022`.
+7. Delete `jest.config.js`.
+8. Migrate specs: `jest.fn()` → `vi.fn()`, `jest.Mocked<T>` → `Mocked<T>` imported from `vitest`. With `globals: true`, `describe/it/expect/beforeEach` don't need to be imported.
+9. `npm test` to verify.
