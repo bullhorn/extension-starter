@@ -4,32 +4,27 @@
   "newProjectRoot": "projects",
   "projects": {
     "platform-extension-starter": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
-      "projectType": "application",
+      "prefix": "platform",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "allowedCommonJsDependencies": [
-              "@bullhorn/taurus",
-              "@bullhorn/dragula",
-              "brace/mode/javascript",
-              "angular2-text-mask",
-              "sha.js",
-              "date-fns"
-            ],
-            "outputPath": "dist",
+            "outputPath": "dist/platform-extension-starter",
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
-            "polyfills": "src/polyfills.ts",
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules/hint.css/src",
-                "node_modules/novo-elements"
-              ]
-            },
+            "browser": "src/main.ts",
+            "polyfills": [
+              "src/polyfills.ts"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
             "assets": [
               "src/assets",
               "src/favicon.ico",
@@ -41,24 +36,48 @@
             "scripts": [
               "node_modules/post-robot/dist/post-robot.min.js"
             ],
-            "aot": false,
-            "vendorChunk": true,
-            "extractLicenses": false,
-            "buildOptimizer": false,
-            "sourceMap": true,
-            "optimization": false,
-            "namedChunks": true
+            "allowedCommonJsDependencies": [
+              "@bullhorn/taurus",
+              "@bullhorn/dragula",
+              "brace",
+              "brace/mode/javascript",
+              "brace/ext/language_tools.js",
+              "brace/theme/chrome",
+              "angular2-text-mask",
+              "sha.js",
+              "date-fns",
+              "lodash",
+              "imask",
+              "text-mask-addons",
+              "timezone-support",
+              "resize-observer-polyfill"
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules/hint.css/src",
+                "node_modules/novo-elements"
+              ]
+            }
           },
           "configurations": {
-            "prod": {
-              "optimization": true,
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "10MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
               "outputHashing": "all",
+              "optimization": true,
               "sourceMap": false,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -66,9 +85,16 @@
                 }
               ]
             },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            },
             "staging": {
               "optimization": false,
               "sourceMap": true,
+              "extractLicenses": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
@@ -79,56 +105,77 @@
             "local": {
               "optimization": false,
               "sourceMap": true,
+              "extractLicenses": false,
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.local.ts"
                 }
               ]
+            },
+            "prod": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "10MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ]
             }
           },
-          "defaultConfiguration": ""
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "platform-extension-starter:build"
-          },
           "configurations": {
-            "prod": {
-              "browserTarget": "platform-extension-starter:build:production"
+            "production": {
+              "buildTarget": "platform-extension-starter:build:production"
+            },
+            "development": {
+              "buildTarget": "platform-extension-starter:build:development"
             },
             "staging": {
-              "browserTarget": "platform-extension-starter:build:staging"
+              "buildTarget": "platform-extension-starter:build:staging"
             },
             "local": {
-              "browserTarget": "platform-extension-starter:build:local"
+              "buildTarget": "platform-extension-starter:build:local"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "platform-extension-starter:build"
-          }
+          "builder": "@angular-devkit/build-angular:extract-i18n"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "src/test.ts",
-            "karmaConfig": "./karma.conf.js",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "scripts": [
-              "node_modules/post-robot/dist/post-robot.min.js"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "tsConfig": "tsconfig.spec.json",
             "assets": [
               "src/assets",
               "src/favicon.ico",
               "src/static"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": [
+              "node_modules/post-robot/dist/post-robot.min.js"
             ]
           }
         },
@@ -142,33 +189,12 @@
           }
         }
       }
-    },
-    "platform-extension-starter-e2e": {
-      "root": "e2e",
-      "sourceRoot": "e2e",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "platform-extension-starter:serve"
-          }
-        }
-      }
-    }
-  },
-  "defaultProject": "platform-extension-starter",
-  "schematics": {
-    "@schematics/angular:component": {
-      "prefix": "platform",
-      "style": "scss"
-    },
-    "@schematics/angular:directive": {
-      "prefix": "platform"
     }
   },
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ],
+    "analytics": false
   }
 }

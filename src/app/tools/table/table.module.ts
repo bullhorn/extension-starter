@@ -20,12 +20,6 @@ import {IconCellComponent} from './cells/icon-cell.component';
     EditCellComponent,
     IconCellComponent
   ],
-  entryComponents: [
-    PreviewCellComponent,
-    DeleteCellComponent,
-    EditCellComponent,
-    IconCellComponent
-  ],
   exports: [
     PreviewCellComponent,
     DeleteCellComponent,

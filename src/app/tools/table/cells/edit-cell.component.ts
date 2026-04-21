@@ -6,7 +6,8 @@ import {BaseRenderer} from 'novo-elements';
   selector: 'edit-cell',
   template: `
     <button icon="edit" theme="icon" side="right" (click)="onClick()"></button>
-  `
+  `,
+  standalone: false
 })
 export class EditCellComponent extends BaseRenderer {
 

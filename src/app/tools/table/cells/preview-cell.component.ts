@@ -6,7 +6,8 @@ import {BaseRenderer} from 'novo-elements';
   selector: 'preview-cell',
   template: `
     <button icon="preview" theme="icon" side="right" (click)="onClick()"></button>
-  `
+  `,
+  standalone: false
 })
 export class PreviewCellComponent extends BaseRenderer {
 

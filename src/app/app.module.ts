@@ -6,9 +6,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { NovoElementsModule } from 'novo-elements';
 // APP
 import { AppComponent } from './app.component';
-import {HttpClientModule} from '@angular/common/http';
 import {AppBridgeService} from './tools/service/app-bridge.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ModalModule } from "./tools/modal/modal.module";
+import { StandardModalComponent } from './tools/modal/standard/standard-modal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '', pathMatch: 'full' }
@@ -16,15 +17,15 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes, { useHash: true }),
-    HttpClientModule,
     NovoElementsModule,
-    BrowserAnimationsModule
-  ],
+    BrowserAnimationsModule,
+    ModalModule
+],
   providers: [
     AppBridgeService,
   ],

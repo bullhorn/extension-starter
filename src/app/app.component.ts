@@ -5,9 +5,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'platform-root',
+  standalone: false,
   template: `
+    <novo-title>
+      Hello World!
+    </novo-title>
     <router-outlet></router-outlet>
   `
 })
-export class AppComponent {
-}
+export class AppComponent {}

@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import {getNestedElement} from '../../table/table.utils';
 
 @Pipe({
-  name: 'groupBy'
+  name: 'groupBy',
+  standalone: false
 })
 export class GroupByPipe implements PipeTransform {
 

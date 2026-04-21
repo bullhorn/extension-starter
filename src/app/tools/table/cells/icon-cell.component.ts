@@ -6,7 +6,8 @@ import {BaseRenderer} from 'novo-elements';
   selector: 'icon-cell',
   template: `
     <button [icon]="meta.icon" theme="icon" side="right" (click)="onClick()"></button>
-  `
+  `,
+  standalone: false
 })
 export class IconCellComponent extends BaseRenderer {
 
